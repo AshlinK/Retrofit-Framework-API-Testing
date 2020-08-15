@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.api</groupId>
-    <artifactId>ash-api-testing</artifactId>
+    <artifactId>api-testing</artifactId>
     <version>1.0.6-SNAPSHOT</version>
     <packaging>jar</packaging>
     <build>
@@ -54,8 +54,8 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -116,6 +116,13 @@
             <artifactId>htmlunit-driver</artifactId>
             <version>2.28.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20200518</version>
+        </dependency>
+
 
     </dependencies>
 </project>

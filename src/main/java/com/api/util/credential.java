@@ -5,6 +5,7 @@ package main.java.com.api.util;
  */
 public enum credential {
     API_BASE_URL,
+    APP_BASE_URL,
     DEFAULT_ADMIN_ACCESS_TOKEN,
     DEFAULT_USER_ACCESS_TOKEN,
     DEFAULT_ADMIN_ID,

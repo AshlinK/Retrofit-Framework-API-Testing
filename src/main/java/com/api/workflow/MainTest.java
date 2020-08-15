@@ -33,10 +33,10 @@ import java.util.logging.Logger;
  * Created by Ashlin Karkada on 16-06-2017.
  */
 public class MainTest {
-    final String authorization = config.get(credential.DEFAULT_ADMIN_ACCESS_TOKEN);
-    final String adminId=config.get(credential.DEFAULT_ADMIN_ID);
+    //final String authorization = config.get(credential.DEFAULT_ADMIN_ACCESS_TOKEN);
+    //final String adminId=config.get(credential.DEFAULT_ADMIN_ID);
 
-    static final String BASE_URL = config.get(credential.API_BASE_URL);
+    static final String BASE_URL = config.get(credential.APP_BASE_URL);
 
     static final okhttp3.OkHttpClient client = new OkHttpClient.Builder()
             .readTimeout(60, TimeUnit.SECONDS)
@@ -63,12 +63,12 @@ public class MainTest {
         return retrofit;
     }
 
-    public static APIError parseError(Response<?> response) throws IOException {
-        Converter<ResponseBody, APIError> converter = MainTest.retrofit()
-                .responseBodyConverter(APIError.class, new Annotation[0]);
-        APIError error = converter.convert(response.errorBody());
-        return error;
-    }
+//    public static APIError parseError(Response<?> response) throws IOException {
+//        Converter<ResponseBody, APIError> converter = MainTest.retrofit()
+//                .responseBodyConverter(APIError.class, new Annotation[0]);
+//        APIError error = converter.convert(response.errorBody());
+//        return error;
+//    }
 
     public String getUniqueNumber(int startIndex, int endIndex) {
         return UUID.randomUUID().toString().substring(startIndex, endIndex).replace("-", "");
@@ -77,13 +77,9 @@ public class MainTest {
 
 
 
-    @BeforeSuite(enabled = true,groups = {"public_api.p2"})
-    public void refreshAdminToken() throws IOException{
-        Response<BasicDTO<UserRequest>> refreshTokenResponse=UserWorkflow.refreshToken(adminId,authorization);
-        Assert.assertEquals(refreshTokenResponse.code(), HttpStatus.SC_OK,"Refresh token response do not match");
-        Assert.assertEquals(refreshTokenResponse.body().getData().getAuthToken(),authorization,"Authorization do not match");
-        Assert.assertEquals(refreshTokenResponse.body().getData().getUserId(),adminId,"Id's do not match");
-        Assert.assertEquals(refreshTokenResponse.body().getData().getUserType(),"Admin","User type do not match");
+    @BeforeSuite(enabled = true)
+    public void beforeSuiteMethod() throws IOException{
+        System.out.println("Before suite executed");
     }
 
 }
